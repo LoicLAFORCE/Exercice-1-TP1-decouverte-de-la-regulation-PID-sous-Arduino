@@ -1,0 +1,20 @@
+// Déclaration des variables
+int pwm;// On émet la variable pwm
+int ledPin=10; // On renomme la broche 10 en "ledPin"
+
+void setup() {
+
+pinMode(ledPin, OUTPUT);//On définit la led en sortie
+Serial.begin(9600); //On insére le moniteur de série afin de voir en direct la veleur
+}
+
+void loop() {
+
+pwm = analogRead(A0);//On lit la valeur A0 (du potentiomètre) dans la variable pwm, cette valeur est stocké dans la variable pwm
+pwm = map(pwm, 0, 1023, 0, 255);//on convertit la plage du potentiomètre qui va de 0 à 1023 à la plage du signal pwm qui va de 0 à 255
+
+Serial.println(pwm);//on affiche la valeur du pwm dans le moniteur de série
+analogWrite(ledPin,pwm);//la lumière lit la valeur du pwm pour définir son intensité
+
+delay(200);//On met un délai 0.2s, afin d'obsever plus facilement les nombres dans le moniteur de série
+}
