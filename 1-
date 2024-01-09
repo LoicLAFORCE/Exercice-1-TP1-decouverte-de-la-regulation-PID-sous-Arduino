@@ -10,8 +10,8 @@ pinMode(ledPin,OUTPUT);
 void loop() {
 // La fonction analogwrite permet de générer des valeurs intermédiaires entre 0 et 255 (sur une carte Arduino Uno) 
 analogWrite(ledPin,55); // La led va s'allumer à une valeur égale à 55 qui correspond à environ 21% de sa luminosité maximum
-delay(1000); // On insère un délai de 1 seconde 
+delay(1000); // On insère un délai de 1 seconde, qui permet que la led reste allumé durant 1 seconde 
  analogWrite(ledPin,0); // La Led va s'éteindre
- delay(1000); // On insère un délai de 1 seconde 
+ delay(1000); // On insère un délai de 1 seconde, qui permet que la led reste fermé durant 1 seconde 
 
 }
