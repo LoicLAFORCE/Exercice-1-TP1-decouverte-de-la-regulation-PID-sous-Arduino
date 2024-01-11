@@ -1,0 +1,22 @@
+// Déclaration des variables
+int ledPin=10; //On renomme la broche 10 en "ledPin"
+int pwm;//On émet la variable pwm
+int photo = A5; // on renomme la broche A5 en "photo"
+void setup() {
+
+pinMode(ledPin, OUTPUT);//On définit la led comme sortie
+pinMode(photo, INPUT);// On définit la photorésistance ("photo") en entrée
+Serial.begin(9600); //On insére le moniteur de série afin de voir en direct la valeur
+}
+
+void loop() {
+
+pwm = analogRead(A0);//On lit la valeur A0 (du potentiomètre), cette valeur est stocké dans la variable pwm
+pwm = map(pwm, 0, 1023, 0, 255);//on convertit la plage du potentiomètre qui va de 0 à 1023 à la plage du signal pwm qui va de 0 à 255
+photo = analogRead(A5);//On lit la valeur A5 (de la photorésistance), cette valeur est stocké dans la variable "photo"
+
+Serial.println(photo);//on affiche la valeur de la photorésistance dans le moniteur de série
+analogWrite(ledPin,pwm);//la lumière lit la valeur du pwm pour définir son intensité
+
+delay(200);//on émet un délai, afin d'obsever plus facilement les nombres dans le moniteur de série
+}
