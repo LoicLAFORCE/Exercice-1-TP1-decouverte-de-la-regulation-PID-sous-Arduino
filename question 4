@@ -1,0 +1,16 @@
+//Déclaration des variables
+int pwm;//On émet la variable pwm
+
+void setup() {
+
+Serial.begin(9600); //On insére le moniteur de série afin de voir en direct la valeur du potentiomètre (pwm)
+}
+
+void loop() {
+
+pwm = analogRead(A0); //On lit la valeur A0 (du potentiomètre), cette valeur est stocké dans la variable pwm
+
+Serial.println(pwm); //Cette valeur est transmise au moniterur de série
+
+delay(200); //On met un délai 0.2s, afin d'obsever plus facilement les nombres dans le moniteur de série
+}
